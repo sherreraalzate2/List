@@ -1,6 +1,7 @@
 ﻿using System;
 using List.Class;
 
+
 namespace ListConsole
 {
     class Program
@@ -8,6 +9,21 @@ namespace ListConsole
         static void Main(string[] args)
         {
             DoublyLinkedList<string> list = new DoublyLinkedList<string>();
+
+            // animals
+            string[] animalesIniciales =
+            {
+                "Perro", "Gato", "Loro", "Gato", "Tortuga",
+                "Perro", "Caballo", "Pez", "Gato", "Canario",
+                "Hamster", "Pez", "Conejo", "Perro", "Serpiente"
+            };
+
+            foreach (var a in animalesIniciales)
+            {
+                list.AddOrdered(a);
+            }
+
+
             int option;
 
             do
@@ -32,36 +48,49 @@ namespace ListConsole
                         Console.Write("Dato a insertar: ");
                         list.AddOrdered(Console.ReadLine());
                         break;
+
                     case 2:
+                        Console.WriteLine("Lista hacia adelante:");
                         list.DisplayForward();
                         break;
+
                     case 3:
+                        Console.WriteLine("Lista hacia atrás:");
                         list.DisplayBackward();
                         break;
+
                     case 4:
                         list.SortDescending();
                         Console.WriteLine("Lista ordenada descendentemente.");
                         break;
+
                     case 5:
                         list.Moda();
                         break;
+
                     case 6:
+                        Console.WriteLine("Frecuencia de animales:");
                         list.ShowGraph();
                         break;
+
                     case 7:
                         Console.Write("Ingrese dato a buscar: ");
                         Console.WriteLine(list.Exists(Console.ReadLine()) ? "Existe" : "No existe");
                         break;
+
                     case 8:
                         Console.Write("Dato a eliminar una vez: ");
                         list.RemoveOne(Console.ReadLine());
                         break;
+
                     case 9:
                         Console.Write("Dato a eliminar todas las veces: ");
                         list.RemoveAll(Console.ReadLine());
                         break;
                 }
             } while (option != 0);
+
+            Console.WriteLine("Hasta luego, animal lover 🐾");
         }
     }
 }
